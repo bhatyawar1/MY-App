@@ -38,21 +38,21 @@ export default function TextForm(props) {
     return (
         <>
             <div className='container' style={{ color: props.mode === 'dark' ? 'white' : '#181616' }}>
-                <h1>{props.heading}</h1>
+                <h2 className='mb-3'>{props.heading}</h2>
                 <div className="mb-3">
-                    <textarea className="form-control" onChange={handleOnChange} style={{ backgroundColor: props.mode === 'light' ? 'white' : '#191e42', color: props.mode === 'dark' ? 'white' : '#181616' }} value={text} id="myBox" rows="8"></textarea>
+                    <textarea className="form-control" onChange={handleOnChange} style={{ backgroundColor: props.mode === 'light' ? 'white' : '#353b66', color: props.mode === 'dark' ? 'white' : '#181616' }} value={text} id="myBox" rows="6"></textarea>
                 </div>
-                <button className="btn btn-primary m-2" onClick={handleUpClick} >Convert to UpparCase</button>
-                <button className="btn btn-primary m-2" onClick={handleLowClick} >Convert to LowerCase</button>
-                <button className="btn btn-primary m-2" onClick={handleCap} >Captalize</button>
-                <button className="btn btn-primary m-2" onClick={handleClear} >Clear</button>
+                <button disabled={text.length === 0} className="btn btn-primary m-1" onClick={handleUpClick} >Convert to UpparCase</button>
+                <button disabled={text.length === 0} className="btn btn-primary m-1" onClick={handleLowClick} >Convert to LowerCase</button>
+                <button disabled={text.length === 0} className="btn btn-primary m-1" onClick={handleCap} >Captalize</button>
+                <button disabled={text.length === 0} className="btn btn-primary m-1" onClick={handleClear} >Clear</button>
             </div>
             <div className="container my-2">
                 <h1>Your Text Summary</h1>
-                <p>{text.split(" ").length} Words, {text.length} Characters</p>
-                <p>It can take {0.008 * text.split(" ").length} minutes to read this text</p>
+                <p>{text.split(/\s+/).filter((element) => { return element.length !== 0 }).length} Words, {text.length} Characters</p>
+                <p>It can take {0.008 * text.split(" ").filter((element) => { return element.length !== 0 }).length} minutes to read this text</p>
                 <h2>Preview:</h2>
-                <p>{text.length > 0 ? text : 'Enter the text above to preview'}</p>
+                <p>{text.length > 0 ? text : 'Nothing to preview'}</p>
             </div>
         </>
     )

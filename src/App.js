@@ -52,10 +52,10 @@ function App() {
         <Alert alert={alert} />
         <div className="container my-3">
           <Routes>
-            <Route exact path="/about" element={<About />}>
+            <Route exact path="/about" element={<About mode={mode} />}>
 
             </Route>
-            <Route exact path="/" element={<TextForm show={showAlert} heading="Enter the Text to Analyze" mode={mode} />}>
+            <Route exact path="/" element={<TextForm show={showAlert} heading="Try My-App - word counter, upparcase to lowercase etc." mode={mode} />}>
 
 
             </Route>
